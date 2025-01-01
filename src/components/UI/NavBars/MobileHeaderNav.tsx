@@ -1,24 +1,26 @@
-import NavLink from "@/components/UI/CTAs/NavLink";
+import { useEffect } from "react";
 
-const DesktopHeaderNav = () => {
-  const navItems = [
-    { href: '/', label: 'Study Destination' },
-    { href: '/', label: 'Our Services' },
-    { href: '/', label: 'About Us' },
-    { href: '/', label: 'Contact Us' },
-    { href: '/', label: 'Blogs' },
-    { href: '/', label: 'Events & Webinars' },
-  ];
+interface MobileHeaderNavProps {
+  toggle: boolean;
+}
+
+const MobileHeaderNav: React.FC<MobileHeaderNavProps> = ({ toggle }) => {
+  useEffect(() => {
+    document.body.classList.toggle("overflow-hidden", toggle);
+  }, [toggle]);
 
   return (
-    <ul className="flex justify-between items-center gap-4">
-      {navItems.map((item, index) => (
-        <li key={index}>
-          <NavLink href={item.href} label={item.label} />
-        </li>
-      ))}
-    </ul>
+    <div
+      className={`absolute h-dvh w-dvw inset-0 flex justify-end items-center overflow-hidden`}
+    >
+      <div
+        className={`bg-black size-4 translate-x-10 rounded-full transition-all duration-500 ${
+          toggle ? "scale-[100]" : "scale-0"
+        }`}
+        id="MobileNav"
+      ></div>
+    </div>
   );
 };
 
-export default DesktopHeaderNav;
+export default MobileHeaderNav;
