@@ -1,77 +1,34 @@
-import React from "react";
+import Hamburger from "../UI/Hamburger";
+import PrimaryButton from "../UI/Buttons/PrimaryButton";
+import { useState } from "react";
+import DesktopHeaderNav from "../UI/NavBars/MobileHeaderNav";
+import HeaderLogo from "../UI/Logos/HeaderLogo";
 
 const Header: React.FC = () => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setIsChecked(checked);
+  };
+
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+    <div className=" relative flex justify-center">
+      <header className="absolute  flex justify-center xl:pt-5 xl:w-auto w-full">
+        <div className="flex p-3 items-center  bg-white sm:flex-row w-full xl:rounded-full justify-between HeaderShadow flex-row-reverse xl:mx-5 xl:gap-20">
+          <Hamburger
+            isChecked={isChecked}
+            onCheckboxChange={handleCheckboxChange}
+          />
+          {isChecked && <div></div>}
+          <HeaderLogo />
+          <div className="hidden xl:block">
+            <DesktopHeaderNav />
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <PrimaryButton size="sm" className="sm:block hidden">
+            Consult Now
+          </PrimaryButton>
         </div>
-        <a className="text-xl btn btn-ghost">daisyUI</a>
-      </div>
-      <div className="hidden navbar-center lg:flex">
-        <ul className="px-1 menu menu-horizontal">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
+      </header>
     </div>
   );
 };

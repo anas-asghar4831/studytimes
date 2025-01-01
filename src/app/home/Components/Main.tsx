@@ -7,7 +7,7 @@ export default function Main() {
   return (
     <>
       {lastframeurl && homeVideoFlag && (
-        <div>
+        <div className="relative">
           <Header />
           <Hero BgURL={lastframeurl} />
         </div>
