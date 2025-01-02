@@ -28,7 +28,8 @@
 
 .line {
   fill: none;
-  stroke: #f78300; /* Updated to use primary color */
+  stroke: #f78300;
+  /* Updated to use primary color */
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
@@ -41,11 +42,11 @@
   stroke-dasharray: 12 63;
 }
 
-.hamburger input:checked + svg {
+.hamburger input:checked+svg {
   transform: rotate(-45deg);
 }
 
-.hamburger input:checked + svg .line-top-bottom {
+.hamburger input:checked+svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
@@ -71,7 +72,8 @@
 }
 
 .button {
-  padding: 4px 8px; /* Default for smallest screens */
+  padding: 4px 8px;
+  /* Default for smallest screens */
 }
 
 @media (min-width: 640px) {
@@ -84,4 +86,12 @@
   .button {
     padding: 9px 18px;
   }
+}
+
+.power3_in {
+  transition: all 0.25s ease-out;
+}
+
+#Navlist li::after {
+  width: var(--after-width, 0);
 }
