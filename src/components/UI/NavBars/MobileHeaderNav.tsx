@@ -59,7 +59,7 @@ const MobileHeaderNav: React.FC<MobileHeaderNavProps> = ({ toggle }) => {
                   duration: 0.3,
                   ease: "power2.out",
                 },
-                index * 0.F // after li x animation is complete
+                index * 0.2 + 0.15 // after li x animation is complete
               );
             });
           });
