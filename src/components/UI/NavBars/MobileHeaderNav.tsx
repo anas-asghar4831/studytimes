@@ -76,28 +76,30 @@ const MobileHeaderNav: React.FC<MobileHeaderNavProps> = ({ toggle }) => {
   }, [toggle]);
 
   return (
-    <div className="absolute h-dvh w-dvw inset-0 flex justify-end overflow-hidden pt-32">
-      <ul
-        className="flex w-full gap-16 text-5xl ml-14 mt-6 text-white flex-col z-10 overflow-hidden"
-        id="Navlist"
-      >
-        {navItems.map((item, index) => (
-          <li
-            key={index}
-            className="z-10 relative after:w-0 size-fit after:h-1 after:bg-primary after:absolute after:left-0 after:-bottom-4 -translate-x-full"
-          >
-            <Link href={item.href} className="">
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div
-        ref={mobileNavRef}
-        className="absolute bg-black inset-0 left-full rounded-full size-4 "
-        id="MobileNav"
-      ></div>
-    </div>
+    <>
+      <div className="absolute  inset-0 h-dvh overflow-hidden pt-16 pl-14">
+        <ul
+          className="flex text-white flex-col z-10 md:text-4xl overflow-x-hidden h-full text-2xl gap-4 sm:gap-6 mt-8 ml"
+          id="Navlist"
+        >
+          {navItems.map((item, index) => (
+            <li
+              key={index}
+              className="z-10 relative after:w-0 size-fit after:h-[2px] after:bg-primary after:absolute after:left-0 after:-bottom-1 -translate-x-full"
+            >
+              <Link href={item.href} className="">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div
+          ref={mobileNavRef}
+          className="absolute bg-black inset-0 left-full rounded-full size-4 "
+          id="MobileNav"
+        ></div>
+      </div>
+    </>
   );
 };
 
